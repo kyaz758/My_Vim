@@ -1,0 +1,47 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-10T15:38:42+08:00
+
+====== 插件列表 ======
+Created 星期四 10 十一月 2016
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" >>
+""""""""""""""""""""" Vundle
+set nocompatible
+"filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/vundle'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/ListToggle'
+Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
+Plugin 'lokaltog/vim-powerline'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/indexer.tar.gz'
+Plugin 'vim-scripts/DfrankUtil'
+Plugin 'vim-scripts/vimprj'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'lilydjwg/fcitx.vim'
+Plugin 'lokaltog/vim-easymotion'
+
+call vundle#end()
+filetype plugin indent on
+"安装   :PluginInstall
+"卸载   :PluginClean
+"更新   :PluginUpdate
+""""""""""""""""vundle""""" Vundle
+
+"map <leader><space> :FixWhitespace<cr>	" \+space去掉末尾空格
+
+" <<
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

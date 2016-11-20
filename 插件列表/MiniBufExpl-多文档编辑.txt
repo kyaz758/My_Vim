@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-10T15:47:57+08:00
+
+====== MiniBufExpl-多文档编辑 ======
+Created 星期四 10 十一月 2016
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" >>
+" 多文档编辑
+set hidden 
+
+let g:miniBufExplMapCTabSwitchBufs = 1
+" 显示/隐藏 MiniBufExplorer 窗口
+map <Leader>bl :MBEToggle<cr>
+
+" buffer 切换快捷键
+map <Leader><TAB> :MBEbn<cr>
+map <Leader><S-TAB> :MBEbp<cr>
+"noremap <C-TAB>   :MBEbf<CR>
+"noremap <C-S-TAB> :MBEbb<CR>
+" <<
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

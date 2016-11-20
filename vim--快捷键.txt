@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-09T00:29:48+08:00
+
+====== vim--快捷键 ======
+Created 星期三 09 十一月 2016
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 定义快捷键的前缀,即 <Leader>
+let mapleader=";"
+
+nmap gh 0
+nmap gl $
+"设置快捷键将文本复制到系统剪贴板
+vnoremap <Leader>y "+y
+"设置快捷键将系统剪贴板复制到vim
+vnoremap <Leader>p "+p
+
+" 定义快捷键保存当前窗口内容
+nmap <Leader>w :w<CR>
+" 定义快捷键保存所有窗口内容并退出
+nmap <Leader>WQ :wa<CR>:q<CR>
+" 不做任何保存,直接退出 vim
+nmap <Leader>Q :qa!<CR>
+
+" 依次遍历子窗口
+nnoremap nw <C-W><C-W>
+" 跳转至右方窗口
+nnoremap <Leader>lw <C-W>l
+" 跳转至左方窗口
+nnoremap <Leader>hw <C-W>h
+" 跳转至上方窗口
+nnoremap <Leader>kw <C-W>k
+" 跳转至左方窗口
+nnoremap <Leader>jw <C-W>j
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

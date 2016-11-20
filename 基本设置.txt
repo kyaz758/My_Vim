@@ -1,0 +1,89 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-09T00:35:04+08:00
+
+====== 基本设置 ======
+Created 星期三 09 十一月 2016
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" >>
+" 文件类型侦测
+
+" 开启文件类型侦测
+filetype on
+" 根据侦测到的不同类型加载对应的插件
+filetype plugin on
+
+" 让配置变更立即生效
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
+
+" 其他
+
+" 开启实时搜索功能vundle
+set incsearch
+
+" 搜索时大小写不敏感
+set ignorecase
+
+" 关闭兼容模式
+set nocompatible
+
+" vim 自身命令行模式智能补全
+set wildmenu " << 
+
+" 辅助信息
+
+" 总是显示状态栏
+set laststatus=2
+
+" 显示光标当前位置
+set ruler
+
+" 开启行号显示
+set number
+
+" 高亮显示当前行/列
+set cursorline
+set cursorcolumn
+
+" 高亮显示搜索结果
+set hlsearch
+
+" <<
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" >>
+set autoindent       	 " 设置自动对齐(缩进)：即每行的缩进值与上一行相等
+set smartindent        	 " 智能对齐方式
+set cul			 " 显示当前行下划线
+set tabstop=4 		 " 设置制表符(tab键)的宽度
+set softtabstop=4     	 " 设置软制表符的宽度    
+set shiftwidth=4        " (自动) 缩进使用的4个空格
+set cindent              " 使用 C/C++ 语言的自动缩进方式
+set cinoptions={0,1s,t0,n-2,p2s,(03s,=.5s,>1s,=1s,:1s     " 设置C/C++语言的具体缩进方式
+set backspace=2          " 设置退格键可用
+set mouse=a              " 使用鼠标      
+set completeopt=longest,menu	"让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif	"离开插入模式后自动关闭预览窗口
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"	
+"回车即选中当前项
+"上下左右键的行为 会显示其他信息
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+" <<
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" >>
+" 代码折叠
+
+" 基于缩进或语法进行代码折叠
+"set foldmethod=indent
+set foldmethod=syntax
+" 启动 vim 时关闭折叠代码
+set nofoldenable
+
+" <<
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -1,0 +1,116 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-06T17:24:04+08:00
+
+====== 头信息插入 ======
+Created 星期日 06 十一月 2016
+
+vim自动添加和更新文件注释信息
+
+这里利用vim的脚本功能为C/C++文件自动添加日期、版权等说明信息。同样的方法可用于Python等类型的文件处理。
+
+1. 自动添加文件头
+
+首先新建一个文件c_header.vim
+
+:insert
+/*********************************************************
+ * File Name:
+ * Purpose:
+ * Creation Date:
+ * Last Modified:
+ * Created By: zhangzq@citics.com
+ *********************************************************/
+
+#include  "util/stdafx.h"
+.
+然后在~/.vimrc中添加bufnewfile事件回调：
+
+" 定义函数AutoSetFileHead，自动插入文件头
+function! AutoSetShFileHead()
+	"如果文件类型为.sh文件
+	if &filetype == 'sh'
+		call setline(1, "\#!/bin/bash")
+	endif
+
+	normal G
+	normal o
+	normal o
+endfunc
+
+function! AutoSetPyFileHead()
+	"如果文件类型为python
+	if &filetype == 'python'
+		call setline(1, "\#!/usr/bin/env python")
+		call append(1, "\# encoding: utf-8")
+	endif
+
+	normal G
+	normal o
+	normal o
+endfunc
+
+function! AutoSetCFileHead()
+	if &filetype == 'h' || &filetype == "cpp" || &filetype == "c"
+		so ~/config/c_header.vim
+		exe "1,6g/File Name:.*/s//File Name: " .expand("%")
+		exe "1,6g/Creation Date:.*/s//Creation Date: " .strftime("%Y-%m-%d")
+
+		"如果文件类型为.h文件
+		if &filetype == 'h'
+			exe "1,9g/^#include.*/s//#pragma once/"
+		endif
+	endif
+
+	normal G
+	normal o
+	normal o
+endfunc
+
+autocmd BufNewFile *.sh exec ":call AutoSetShFileHead()"
+autocmd BufNewFile *.py exec ":call AutoSetPyFileHead()"
+autocmd BufNewFile *.c,*.cpp,*.h exec ":call AutoSetCFileHead()"
+2. 自动更新文件最后修改日期
+
+在~/.vimrc中添加bufwritepre和filewritepre事件：
+
+function! AutoChangeModifiedTime()
+	execute "normal ma"
+	exe "1,6g/Last Modified:.*/s/Last Modified:.*/Last Modified: " .strftime("%Y-%m-%d")
+	execute "normal `a"
+	execute "normal ma"
+endfunc
+
+autocmd BufWritePre,FileWritePre,FileAppendPre *.c,*.h,*.cpp execute ":call AutoChangeModifiedTime()"
+3. 处理老文件
+
+假设之前有些文件没有经过上述脚本的处理，现在需新添加文件头，可以按照以下步骤操作。
+
+首先：新建一个c_header_for_exist_file.vim文件：
+
+:normal ma
+:normal gg
+:insert
+/***************************************************************
+ * File Name:
+ * Purpose:
+ * Creation Date:
+ * Last Modified:
+ * Created By: zhangzq@citics.com
+ ****************************************************************/
+
+.
+:1,6s/File Name:.*/\='File Name: ' . expand("%")
+:1,6s/Creation Date:.*/\='Creation Date: ' .strftime("%Y-%m-%d")
+
+:normal `a
+对于单个文件，用vim打开后运行:source c_header_for_exist_file.vim即可。
+
+如果有很多文件需要处理，此时可用vim的argdo功能。
+
+首先打开vim，然后用args命令打开所有需要处理的文件：
+
+:args *.cpp *.h
+然后用argdo运行命令即可：
+
+:argdo source c_header_for_exist_file.vim

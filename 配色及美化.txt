@@ -1,0 +1,47 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-10T15:36:29+08:00
+
+====== 配色及美化 ======
+Created 星期四 10 十一月 2016
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" >>
+" 配色方案
+
+"set background=dark
+"colorscheme solarized
+colorscheme molokai
+"colorscheme phd
+
+" 营造专注气氛
+
+"  禁止光标闪烁
+"set gcr=a:block-blinkon0
+
+"  禁止显示滚动条
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+
+"  禁止显示菜单和工具条
+"set guioptions-=m
+"set guioptions-=T
+
+" <<
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" >>
+" 其他美化
+
+" 设置 gvim 显示字体
+set guifont=YaHei\ Consolas\ Hybrid\ 16
+
+" 禁止折行
+set nowrap
+
+" 设置状态栏主题风格
+let g:Powerline_colovundlerscheme='solarized256'
+
+" <<
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

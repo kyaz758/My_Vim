@@ -1,0 +1,67 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-11-10T15:42:24+08:00
+
+====== Tagbar-标签页 ======
+Created 星期四 10 十一月 2016
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" >>
+" 标签列表
+
+" 启动时自动focus
+"let g:tagbar_autofocus=1
+" 如果是C/C++,自动运行
+autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
+" 如果是Python,自动运行
+autocmd BufReadPost *.py,*.sh call tagbar#autoopen()
+"autocmd VimEnter * wincmd p
+set tags=tags;
+set autochdir
+let g:tagbar_ctags_bin='ctags'
+" 设置 tagbar 子窗口的位置出现在主编辑区的左边
+let tagbar_right=1
+" 设置显示／隐藏标签列表子窗口的快捷键。速记：identifier list by tag
+nnoremap <Leader>ilt :TagbarToggle<CR>
+" 设置标签子窗口的宽度
+let tagbar_width=26
+" tagbar 子窗口中不显示冗余帮助信息
+let g:tagbar_compact=1
+" 设置 ctags 对哪些代码标识符生成标签
+let g:tagbar_type_cpp = {
+	 \ 'ctagstype' : 'c++',
+	 \ 'kinds'     : [
+		 \ 'c:classes:0:1',
+		 \ 'd:macros:0:1',
+		 \ 'e:enumerators:0:0', 
+		 \ 'f:functions:0:1',
+		 \ 'g:enumeration:0:1',
+		 \ 'l:local:0:1',
+		 \ 'm:members:0:1',
+		 \ 'n:namespaces:0:1',
+		 \ 'p:functions_prototypes:0:1',
+		 \ 's:structs:0:1',
+		 \ 't:typedefs:0:1',
+		 \ 'u:unions:0:1',
+		 \ 'v:global:0:1',
+		 \ 'x:external:0:1'
+	 \ ],
+	 \ 'sro'        : '::',
+	 \ 'kind2scope' : {
+		 \ 'g' : 'enum',
+		 \ 'n' : 'namespace',
+		 \ 'c' : 'class',
+		 \ 's' : 'struct',
+		 \ 'u' : 'union'
+	 \ },
+	 \ 'scope2kind' : {
+		 \ 'enum'      : 'g',
+		 \ 'namespace' : 'n',
+		 \ 'class'     : 'c',
+		 \ 'struct'    : 's',
+		 \ 'union'     : 'u'
+	 \ }
+\ }
+
+" <<
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
